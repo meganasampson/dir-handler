@@ -3,7 +3,8 @@
     "children": [
         {
             "type": "folder",
-            "name": "folder1"
+            "name": "folder1",
+            "children": []
         },
         {
             "type": "folder",
@@ -15,17 +16,20 @@
                     "children": [
                         {
                             "type": "folder",
-                            "name": "folder222"
+                            "name": "folder222",
+                            "children": []
                         }
                     ]
                 },
         {
             "type": "folder",
-            "name": "foldersomething"
+            "name": "foldersomething",
+            "children": []
             },
         {
             "type": "folder",
-            "name": "foldertest"
+            "name": "foldertest",
+            "children": []
         },
         {
             "type": "folder",
@@ -33,7 +37,8 @@
             "children": [
                 {
                     "type": "folder",
-                    "name": "folder33"
+                    "name": "folder33",
+                    "children": []
                 }
             ]
         }
