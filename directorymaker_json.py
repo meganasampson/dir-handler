@@ -14,64 +14,50 @@ parser.add_argument("--location", default = str(os.getcwd()), type = str)
 
 args = parser.parse_args()
 
+class Level():
+    def __init__(self, level = 1):
+        self.level = level
 
-def folder_maker(filelist, location):
-    """
-    loops through file structure list and makes folders based on ├── symbol
-    """
-    os.chdir(location)
+    def go_deeper(self):
+        self.level = self.level + 1
 
-    level = 1
+    def come_up(self):
+        self.level = self.level - 1
 
-    for i in range(len(filelist)):
 
-        if "├──" not in filelist[i]:
-            #checks where the next folder should be based on current level
-            level2 = filelist[i-1].count("├──")
 
-            if level2 == level:
-                #make folder in same directory
-                os.makedirs(filelist[i])
 
-            elif level2 > level:
-                #moves DOWN next directory and makes folder in there
-                cwd = Path(os.getcwd())
-                foldername = Path(filelist[i-2])
-                newpath = cwd/foldername
-                os.chdir(newpath)
-                os.makedirs(filelist[i])
-                #make new level the current level
-                level = level + 1
+def get_curr_level(json_data):
+    current_file = json_data
+    list_i = current_file["children"]
+    find_children(list_i)
 
-            elif level2 < level:
-                for j in range(level - level2):
-                    #moves UP to the correct directory and makes folder there
-                    cwd = Path(os.getcwd())
-                    foldername = Path("..")
-                    newpath = cwd/foldername
-                    os.chdir(newpath)
-                os.makedirs(filelist[i])
-                #make new level the current level
-                level = level2
+def find_children(my_children):
 
-def dir_maker(foldername):
-    os.makedirs(foldername)
+    for i in my_children:
+        print(i["name"])
+        print(level_finder.level)
+        
+        if i["children"]:
+            level_finder.go_deeper()
+            get_curr_level(i)
+        
 
-def find_children(json_step):
+    level_finder.come_up()
+
+def find_children2(json_step):
     next_step = json_step["children"]
     return next_step
 
 def read_json(json_file):
     with open(json_file) as file:
         json_data = json.load(file)
-    if json_data["children"]:
-        json_data = find_children(json_data)
-
+        get_curr_level(json_data)
 
 if __name__ == '__main__':
     #get_dictionary_word_list(args.filename, args.location)
+    level_finder = Level()
     read_json(args.filename)
-
 
 
         
