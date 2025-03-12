@@ -19,9 +19,11 @@ class Level():
         self.level = level
 
     def go_deeper(self):
+        print("number go up")
         self.level = self.level + 1
 
     def come_up(self):
+        print("number go down")
         self.level = self.level - 1
 
 
@@ -36,14 +38,22 @@ def find_children(my_children):
 
     for i in my_children:
         print(i["name"])
+        #level_finder.come_up()
         print(level_finder.level)
-        
-        if i["children"]:
-            level_finder.go_deeper()
-            get_curr_level(i)
-        
 
     level_finder.come_up()
+    #line here keeps always at one...
+        
+    if i["children"]:
+        level_finder.go_deeper()
+        level_finder.go_deeper()
+        get_curr_level(i)
+        
+    #level_finder.come_up()
+    #line here means it only ever goes up by one at the end...
+        
+
+    #level_finder.come_up()
 
 def find_children2(json_step):
     next_step = json_step["children"]
