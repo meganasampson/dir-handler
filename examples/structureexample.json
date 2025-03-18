@@ -20,8 +20,8 @@
                             "children": []
                         }
                     ]
-                },
-        {
+                }]},
+            {
             "type": "folder",
             "name": "foldersomething",
             "children": []
@@ -42,7 +42,5 @@
                 }
             ]
         }
-        ]
-        }
-    ]
-}
+        
+        ]}
