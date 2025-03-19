@@ -11,40 +11,68 @@ parser.add_argument("--location", default = str(os.getcwd()), type = str)
 args = parser.parse_args()
 
 class Level():
-    def __init__(self, level = 0, previouslvl = 0, directory = os.getcwd(), prev_dif = None):
+    def __init__(self, level = 0, previouslvl = 0, directory = os.getcwd(), prev_dif = None, first_dir = True):
         self.level = level
         self.previouslvl = previouslvl
         self.directory = directory
         self.prev_dif = prev_dif
+        self.first_dir = first_dir
 
-    def go_deeper(self):
+    def deeper_dir(self):
+
+        """
+        Adds 1 to the level counter, showing a child directory
+        """
+
         self.level = self.level + 1
 
-    def come_up(self):
+    def higher_dir(self):
+
+        """
+        Substracts 1 to the level counter, showing returning to parent directory
+        """
+
         self.level = self.level - 1
 
     def store_lvl(self):
-        self.previouslvl = self.level
 
-    def current_level(self, folder_name):
-        #self.directory = os.getcwd()
-        self.current_level = folder_name
+        """
+        Keeps the previous level so that the level difference can be calculated
+        """
+
+        self.previouslvl = self.level
     
     def get_prev_dif(self, curr_level):
+        
+        """
+        Stores the previous level difference to determine whether a directory
+        should be moved out of
+        """
+
         self.prev_dif = curr_level
+
+    def first_dir_switch(self):
+
+        """
+        Tracking whether or not a directory is the first directory being
+        written
+        """
+
+        self.first_dir = False
 
 def make_dir(folder_name):
 
-    #print(folder_name)
-    #print(os.getcwd())
+    """
+    Move to the right location and create the directory
+    """
+
     lvl_dif = level_finder.level - level_finder.previouslvl
 
-    if folder_name == 'folder1':
+    if level_finder.first_dir == True:
         lvl_dif = 0
-        #level_finder.prev_dif = 0
-        #FIGURE OUT HOW TO MAKE WORK IN GENERAL
+        level_finder.first_dir_switch()
+
     print(lvl_dif)
-    #print(level_finder.prev_dif)
 
     if lvl_dif > 0:
 
@@ -66,37 +94,42 @@ def make_dir(folder_name):
             os.chdir("..")
         print(folder_name)
         os.makedirs(folder_name)
-        #problem - no movement into folder, so child doesn't know what it belongs to, makes folder 
         os.chdir(folder_name)
-        #print("same level")
 
     else:
-        print("what else")
-        #os.makedirs(folder_name)
+        pass
 
     level_finder.store_lvl()
     level_finder.get_prev_dif(lvl_dif)
 
-def see_children(json_data):
+def search_children(json_data):
+
+    """
+    Check if children data exists, and send it to make_dir to
+    write the directories
+    """
 
     if json_data['children']:
-        level_finder.go_deeper()
+        level_finder.deeper_dir()
 
         for i in json_data['children']:
             make_dir(i['name'])
-            see_children(i)
+            search_children(i)
 
-        level_finder.come_up()
+        level_finder.higher_dir()
 
 def read_json(json_file):
 
+    """
+    Load the json file, and start initial search for 'children' folders
+    """
+
     with open(json_file) as file:
         json_data = json.load(file)
-        see_children(json_data)
+        search_children(json_data)
 
 
 if __name__ == '__main__':
-    #get_dictionary_word_list(args.filename, args.location)
     level_finder = Level()
     read_json(args.filename)
 
