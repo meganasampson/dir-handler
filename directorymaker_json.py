@@ -41,28 +41,30 @@ def make_dir(folder_name):
 
     if folder_name == 'folder1':
         lvl_dif = 0
+        #level_finder.prev_dif = 0
         #FIGURE OUT HOW TO MAKE WORK IN GENERAL
     print(lvl_dif)
+    #print(level_finder.prev_dif)
 
     if lvl_dif > 0:
-        if level_finder.prev_dif != 0:
-        #if level_finder.prev_dif == 0:
-            os.chdir("..")
+
         for i in range(abs(lvl_dif)):
             os.makedirs(folder_name)
             os.chdir(folder_name)
             print(folder_name)
 
     elif lvl_dif < 0:
-        for i in range(abs(lvl_dif)):
+        for i in range(abs(lvl_dif)+1):
             os.chdir('..')
+            print(os.getcwd())
 
         print(folder_name)
         os.makedirs(folder_name)
 
     elif lvl_dif == 0:
+        if level_finder.prev_dif == 0:
+            os.chdir("..")
         print(folder_name)
-        #os.chdir("..")
         os.makedirs(folder_name)
         #problem - no movement into folder, so child doesn't know what it belongs to, makes folder 
         os.chdir(folder_name)
