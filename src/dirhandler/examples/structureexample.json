@@ -39,6 +39,11 @@
                     "type": "folder",
                     "name": "folder33",
                     "children": []
+                },
+                               {
+                    "type": "folder",
+                    "name": "folder334",
+                    "children": []
                 }
             ]
         }
