@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dirhandler"
+version = "0.0.1"
+description = "A tool for making folders"
+authors = [
+  { name = "maganasampson", email = "megan.sampson@ukaea.uk" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: GNU LGPL",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.10"
+dependencies = [
+  "typer>=0.16.0",
+]
+
+
+[project.urls]
+"Repository" = "https://github.com/meganasampson/dir-handler"
+"Issue Tracker" = "https://github.com/meganasampson/dir-handler/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
