@@ -22,7 +22,7 @@ dependencies = [
 ]
 
 [project.scripts]
-my-client = "dirhandler.cli:app"
+makedirs = "dirhandler.directorymaker_json:start"
 
 
 [tool.setuptools.packages.find]

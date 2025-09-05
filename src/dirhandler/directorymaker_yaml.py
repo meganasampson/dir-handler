@@ -1,6 +1,6 @@
 import yaml
 from yaml.loader import SafeLoader
-from directorymaker_json import Level
+from dirhandler.directorymaker_json import Level
 import argparse
 import os
 

@@ -1,5 +1,10 @@
 import typer
+import os
 
 app = typer.Typer()
 
-print("hello")
+@app.command()
+def showdir():
+    print(os.getcwd())
+
+

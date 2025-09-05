@@ -60,7 +60,7 @@ class Level():
 
         self.first_dir = False
 
-def make_dir(folder_name):
+def make_dir(folder_name, level_finder):
 
     """
     Move to the right location and create the directory
@@ -102,7 +102,7 @@ def make_dir(folder_name):
     level_finder.store_lvl()
     level_finder.get_prev_dif(lvl_dif)
 
-def search_children(json_data):
+def search_children(json_data, level_finder):
 
     """
     Check if children data exists, and send it to make_dir to
@@ -113,12 +113,12 @@ def search_children(json_data):
         level_finder.deeper_dir()
 
         for i in json_data['children']:
-            make_dir(i['name'])
-            search_children(i)
+            make_dir(i['name'], level_finder)
+            search_children(i, level_finder)
 
         level_finder.higher_dir()
 
-def read_json(json_file):
+def read_json(json_file, level_finder):
 
     """
     Load the json file, and start initial search for 'children' folders
@@ -126,10 +126,14 @@ def read_json(json_file):
 
     with open(json_file) as file:
         json_data = json.load(file)
-        search_children(json_data)
+        search_children(json_data, level_finder)
 
-
+def start():
+    level_finder = Level()
+    read_json(args.filename, level_finder)
+    
+"""
 if __name__ == '__main__':
     level_finder = Level()
-    read_json(args.filename)
+    read_json(args.filename)"""
 
