@@ -1,0 +1,18 @@
+{
+  "folder1": {
+    "folder11": [
+      "folder111",
+      "folder112",
+      "folder113"
+    ],
+    "folder12": {
+      "folder121": [],
+      "folder122": []
+    },
+    "folder13": {
+      "folder131": [],
+      "folder132": []
+    },
+    "folder14": []
+  }
+}

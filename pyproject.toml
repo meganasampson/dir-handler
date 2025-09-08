@@ -22,7 +22,7 @@ dependencies = [
 ]
 
 [project.scripts]
-makedirs = "dirhandler.directorymaker_json:start"
+makedirs = "dirhandler.foldermaker:start"
 
 
 [tool.setuptools.packages.find]
