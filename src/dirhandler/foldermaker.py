@@ -2,6 +2,7 @@ import os
 import json
 import argparse
 import pathlib
+from enum import Enum
 
 """define the arguments for making folders"""
 parser = argparse.ArgumentParser()
@@ -15,6 +16,9 @@ parser.add_argument("--location", default = str(os.getcwd()),
                     help="path to create folders in")
 
 args = parser.parse_args()
+
+example_json = {"simpleexample":"example/simplestruc.json",
+                "nestedexample":"example/nestedstrc.json"}
 
 def create_folder_structure(base_path, structure):
     if isinstance(structure, list):
@@ -30,14 +34,14 @@ def create_folder_structure(base_path, structure):
             print(f"Created directory: {path}")
             create_folder_structure(path, sub_structure)
 
-def start():
-    if args.x == True:
+def start(x=args.x, filename=args.filename, location=args.location):
+    if x == True:
         base_dir = pathlib.Path(__file__).parent.resolve() # change eventually __file__ bad...
-        json_file = os.path.join(base_dir, args.filename)
+        json_file = os.path.join(base_dir, filename)
     else:
-        json_file = args.filename
+        json_file = filename
     with open(json_file, 'r') as f:
         folder_data = json.load(f)
-    os.chdir(args.location)
+    os.chdir(location)
     create_folder_structure('.', folder_data)
     print("\nFolder structure created successfully!")
