@@ -2,7 +2,7 @@
   "folder1": {
     "folder11": {
       "folder111":{},
-      "folder112":{},
+      "folder112":"fakestring",
       "folder113":{}
     },
     "folder12": {

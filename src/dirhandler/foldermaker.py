@@ -33,6 +33,10 @@ def create_folder_structure(base_path, structure):
             os.makedirs(path, exist_ok=True)
             print(f"Created directory: {path}")
             create_folder_structure(path, sub_structure)
+    elif isinstance(structure, str):
+        path = base_path+"/"+structure+".txt"
+        f = open(path, "w")
+        f.close
 
 def start(x=args.x, filename=args.filename, location=args.location):
 
