@@ -1,1 +1,88 @@
 # dir-handler
+
+Create directory structures from JSON files 
+
+## Installation:
+
+### Virtual Environment
+
+You may wish to use a virtual environment e.g. with `venv`:
+
+```
+python -m venv dirhandler-env
+source dirhandler-env/bin/activate
+```
+
+### Standard Installation
+
+Clone to your local system and `cd` to the root directory of `dirhandler`. Ensure you virtual environment is activated and run from the `dirhandler` root directory:
+
+```
+pip install .
+```
+
+### Developer Installation
+
+To create an editable installation, follow the instructions for a standard installation but run:
+
+```
+pip install -e .
+```
+
+## Usage and Options
+
+### Terminal
+
+**Example Usage**
+Make sure your virtual environment with the package installed is activated.
+
+Create folders from the default example file stored at src/dirhandler/examples/nestedstruct.json in your current directory:
+```shell
+makedirs -w
+```
+
+Create folders from a specific example file stored at src/dirhandler/examples/ in your current directory:
+```shell
+makedirs -w --filename examples/name_of_example.json
+```
+
+Create folders from a specific JSON file in your current directory:
+```shell
+makedirs --filename path/to/file.json
+```
+
+Create folders from a specific JSON file in a specific directory:
+```shell
+makedirs --filename path/to/file.json --location path/to/dir_creation
+```
+
+**Options**
+- --x : takes example file structures when present without specifiying full path to examples
+- --filename : path to json file to read structure, default = 'examples/nestedtstruc.json'
+- --location : path to create folders in, default = '.'
+
+## Creating JSON structures
+
+JSON directory files should follow the following structure
+
+```json
+{
+  "folder1": {
+    "folder11": {
+      "folder111":{},
+      "folder112":{},
+      "folder113":{}
+    },
+    "folder12": {
+      "folder121": {},
+      "folder122": {}
+    },
+    "folder13": {
+      "folder131": {},
+      "folder132": {}
+    },
+    "folder14": {}
+  },
+  "folder2": {}
+}
+```
