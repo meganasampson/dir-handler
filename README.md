@@ -88,4 +88,5 @@ JSON directory files should follow the following structure
 ```
 
 which will result in the following folders:
+
 <img width="185" height="293" alt="image" src="https://github.com/user-attachments/assets/a1fb2790-1bad-490f-aaac-1059165344fa" />
