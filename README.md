@@ -38,12 +38,12 @@ Make sure your virtual environment with the package installed is activated.
 
 Create folders from the default example file stored at src/dirhandler/examples/nestedstruct.json in your current directory:
 ```shell
-makedirs -w
+makedirs -x
 ```
 
 Create folders from a specific example file stored at src/dirhandler/examples/ in your current directory:
 ```shell
-makedirs -w --filename examples/name_of_example.json
+makedirs -x --filename examples/name_of_example.json
 ```
 
 Create folders from a specific JSON file in your current directory:
@@ -60,6 +60,25 @@ makedirs --filename path/to/file.json --location path/to/dir_creation
 - --x : takes example file structures when present without specifiying full path to examples
 - --filename : path to json file to read structure, default = 'examples/nestedtstruc.json'
 - --location : path to create folders in, default = '.'
+
+### Import in Python Script
+
+Make sure your virtual environment with the package installed is activated.
+
+Import the directory maker
+```python
+import dirhandler.foldermaker as dh
+```
+
+Create folders from the default example file stored at src/dirhandler/examples/nestedstruct.json in your current directory:
+```python
+dh.start(x=True) 
+```
+
+Create folders from a specific JSON file in a specific directory:
+```python
+dh.start(filename = "path/to/file.json", location = "path/to/dir_creation")
+```
 
 ## Creating JSON structures
 

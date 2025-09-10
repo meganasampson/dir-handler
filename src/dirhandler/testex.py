@@ -1,4 +1,4 @@
-import dirhandler.foldermaker as dirhandle
+import dirhandler.foldermaker as dh
 
-dirhandle.start(True)
+dh.start(True)
 
