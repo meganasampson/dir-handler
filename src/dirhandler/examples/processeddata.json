@@ -1,0 +1,43 @@
+{
+    "RigOrTestType-NNNN-ProcessPP": {
+        "ExpXX_DICYY_real_performance_analysis": {
+            "SS_NN_affine": {
+                "SWZZ_QK": {}
+            },
+            "SS_NN_quadratic": {
+                "SWZZ_QK": {}
+            }
+        },
+        "ExpXX_DICYY_real_single_process": {
+            "Subfolders": {}
+        },
+        "ExpXX_DICYY_simulated_performance_analysis": {
+            "Noise_NN": {
+                "SS_NN_affine": {
+                    "SWZZ_QK": {}
+                },
+                "SS_NN_quadratic": {
+                    "SWZZ_QK": {}
+                }
+            },
+            "NoNoise": {
+                "SS_NN_quadratic": {
+                    "SWZZ_QK": {}
+                }
+            }
+        },
+        "ExpXX_DICYY_simulated_single_process": {
+            "Noise_1": {
+                "SS_NN_quadratic": {
+                    "SWZZ_QK": {}
+                }
+            },
+            "NoNoise": {
+                "SS_NN_quadratic": {
+                    "SWZZ_QK": {}
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "RigOrTestType-NNNN-Raw": {
+        "DICYY_CalibCC": {},
+        "DIC-IRYY_CalibCC": {},
+        "ExpXX_DICYY": {
+            "CheckNN_identifier": {}
+        },
+        "ExpXX_DIC-IRYY": {},
+        "ExpXX_PointSensors": {},
+        "ScratchSpace": {}
+        }
+    }
