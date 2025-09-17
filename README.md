@@ -2,6 +2,9 @@
 
 Create directory structures from JSON files 
 
+### Warning
+This tool is under development and may give errors. Please check any output before using. 
+
 ## Installation:
 
 ### Virtual Environment
